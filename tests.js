@@ -69,3 +69,13 @@ test('another example with last parameter optional', function (t) {
   t.equal(attribs['collection'], 'listings');
   t.equal(attribs['id'], null);
 });
+
+test('another example with missing values', function (t) {
+  t.plan(3);
+  let url = '/:version/api/:collection/test/:id';
+  let urlParser = new UrlParser(url);
+  let attribs = urlParser.parse('http://www.test.com/6/test');
+  t.equal(attribs['version'], 6);
+  t.equal(attribs['collection'], null);
+  t.equal(attribs['id'], null);
+});
